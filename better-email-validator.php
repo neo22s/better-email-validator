@@ -3,7 +3,7 @@
  * Plugin Name: Better Email Validator
  * Plugin URI: https://garridodiaz.com/category/wp/
  * Description:  Email address validation for WordPress registration and form submissions.
- * Version: 1.0
+ * Version: 1.1
  * Author: Chema
  * Author URI: https://garridodiaz.com
  * License: GPL2

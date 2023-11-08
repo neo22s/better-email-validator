@@ -2,9 +2,9 @@
 Contributors: deambulando
 Donate link: https://paypal.me/chema/10EUR
 Tags: email, validation, registration, spam, validation, banned domains
-Requires at least: 4.6
-Tested up to: 6.3
-Stable tag: 1.0
+Requires at least: 6.0
+Tested up to: 6.4
+Stable tag: 1.1
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
