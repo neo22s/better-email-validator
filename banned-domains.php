@@ -1,4 +1,4 @@
-<?php return array (
+<?php if ( ! defined( "ABSPATH" ) ) exit;  return array (
   '0-180.com' => 0,
   '0-30-24.com' => 0,
   '0-420.com' => 0,

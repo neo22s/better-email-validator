@@ -38,4 +38,6 @@ No screenshots available.
 == Other Notes ==
 Email Validator is free software distributed under the terms of the GNU General Public License. For more information, visit [the official GPL page](https://www.gnu.org/licenses/gpl-3.0.html).
 
+Uses https://github.com/ivolo/disposable-email-domains/ to get an updated list of disposable email domains.
+
 For support and feedback, please visit the [plugin page on WordPress.org](https://wordpress.org/plugins/email-validator/).

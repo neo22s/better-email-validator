@@ -12,7 +12,7 @@
 defined('ABSPATH') or die('Slow down cowboy');
 
 
-class BetterEmailValidatorPlugin
+class BEVP_BetterEmailValidatorPlugin
 {
 
     const MAIN_FILE = __FILE__;
@@ -79,12 +79,12 @@ class BetterEmailValidatorPlugin
 
         if (!file_exists($file) OR (file_exists($file) AND filemtime($file) < strtotime('-1 month'))) {
             // If the file doesn't exist or is older than a month, regenerate it
-            $banned_domains = file_get_contents("https://rawgit.com/ivolo/disposable-email-domains/master/index.json");
+            $banned_domains = wp_remote_get("https://rawgit.com/ivolo/disposable-email-domains/master/index.json");
 
             // we could read the CDN file
-            if ($banned_domains !== FALSE) 
+            if ( is_array( $banned_domains ) && ! is_wp_error( $banned_domains ) ) 
             {
-                $banned_domains = json_decode($banned_domains, true);
+                $banned_domains = json_decode($banned_domains['body'], true);
 
                 //error reading the JSON file
                 if ($banned_domains === null AND json_last_error() !== JSON_ERROR_NONE) 
@@ -99,7 +99,7 @@ class BetterEmailValidatorPlugin
                 // Store the banned domains as an associative array with domains as keys
                 $banned_domains = array_fill_keys(array_keys(array_flip($banned_domains)), 0);
 
-                file_put_contents($file, '<?php return ' . var_export($banned_domains, true) . ';', LOCK_EX);
+                file_put_contents($file, '<?php if ( ! defined( "ABSPATH" ) ) exit;  return ' . var_export($banned_domains, true) . ';', LOCK_EX);
             }
         }
         else// Load the domains from the cached PHP file
@@ -135,7 +135,7 @@ class BetterEmailValidatorPlugin
 }
 
 // Initialize the plugin
-new BetterEmailValidatorPlugin();
+new BEVP_BetterEmailValidatorPlugin();
 
 
 ?>
